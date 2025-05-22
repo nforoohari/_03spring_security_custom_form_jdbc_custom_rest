@@ -20,18 +20,14 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    public void runScript()
-    {
+    public void runScript() {
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
         databasePopulator.addScript(new ClassPathResource("/init.sql"));
         databasePopulator.execute(this.dataSource);
     }
 
-
-
     @Bean
-    public CommandLineRunner commandLineRunner()
-    {
+    public CommandLineRunner commandLineRunner() {
         return args -> {
             runScript();
         };
